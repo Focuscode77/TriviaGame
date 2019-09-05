@@ -1,6 +1,11 @@
 body{
-    background-color: lightcyan;
-    
+    height: 100%;
+    width:  100%;
+    background-color: lightcyan; 
+    /* background-image: url("/assets/images/photo-1543362906-acfc16c67564.jpg"); */
+    /* background-position: center; */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
 }
 .content {
     max-width: 500px;

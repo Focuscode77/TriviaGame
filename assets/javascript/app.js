@@ -33,18 +33,16 @@ $(document).ready(function () {
             // Log/Debugger
             console.log(count)
             //  Show the number in the #show-number tag.
-            $("#show-number").html("<h2>" + count + "</h2>");
+            $("#show-number").html("<h3>" + "Time Reamining:" + "" + count + "</h3>");
             if (count === 0) {
 
                 //  ...run the stop function.
                 stop();
-        
+
                 //  Alert the user that time is up.
                 alert("Time Up!");
-              }
+            }
 
-            // Loop for questions
-            
         };
         function stop() {
 
@@ -52,12 +50,11 @@ $(document).ready(function () {
             //  We just pass the name of the interval
             //  to the clearInterval function.
             clearInterval(intervalId);
-          }
-       
-          for(i=0; i<questionArr.length; i++){
-            questionArr[i];
-        
+        }
 
+        // Loop for questions
+        for (i = 0; i < questionArr.length; i++) {
+            var randomArr = Math.floor(Math.random() * 2);
 
 
         }
