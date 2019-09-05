@@ -1,0 +1,26 @@
+body{
+    background-color: lightcyan;
+    
+}
+.content {
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+  }
+
+h1{
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+ .center { 
+     display: block; 
+     margin-left: auto; 
+     margin-right: auto; 
+     width: 50%; 
+     text-align: center;
+   } 
+
+  .contain{
+    background-color: black;
+}
