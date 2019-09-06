@@ -4,7 +4,7 @@ var count = 10;
 var currentQuestion = 0;
 var score = 0;
 var lost = 0;
-
+var result = '';
 //  Variable that will hold our interval ID when we execute
 //  the "run" function
 var intervalId;
@@ -61,7 +61,6 @@ $(document).ready(function () {
 
         //  The decrement function.
         function decrement() {
-
             //  Decrease number by one.
             count--;
             // Log/Debugger
@@ -69,19 +68,14 @@ $(document).ready(function () {
             //  Show the number in the #show-number tag.
             $("#show-number").html("<h3>" + "Time Reamining:" + "" + count + "</h3>");
             if (count === 0) {
-
                 //  ...run the stop function.
                 stop();
-
                 //  Alert the user that time is up.
-                alert("Time Up!");
+                timeUp();
             }
 
         };
-        function stop() {
-
-            //  Clears our intervalId
-            //  We just pass the name of the interval
+        function timeUp() {
             //  to the clearInterval function.
             clearInterval(intervalId);
         }
@@ -90,12 +84,14 @@ $(document).ready(function () {
 
             var question = questionArr[currentQuestion].question;
             var choices = questionArr[currentQuestion].choices;
-
-            $("#game").html('<h4>' + question + '</h4> ')
-             (loadChoices(choices))
+            // Check debug
+            console.log(question)
+            console.log(choices)
+            $("#game").html(`<h4> ${question} </h4> ${loadChoices(choices)}`)
+     
+            // $("#answer").html('<p>' + choices + '</p>'
 
         };
-
 
         // Function for choices(Still working)
         function loadChoices(choices) {
@@ -103,7 +99,9 @@ $(document).ready(function () {
             var result = '';
             for (let i = 0; i < choices.length; i++) {
 
-                result += `<p class="choice" data-answer="${choices[i]}>${choices[i]}</p>`;
+                result += `<p class="choice" data-answer="${choices[i]}">${choices[i]} </p>`;
+// Check Debug
+               console.log(result)
 
             }
             return result;
@@ -111,11 +109,6 @@ $(document).ready(function () {
         };
 
         startQuestion();
-
-
-
-
-
 
         // If Statements
     });

@@ -12,12 +12,12 @@ body{
     margin: auto;
     text-align: center;
   }
-
+/* font display for heading */
 h1{
     color: black;
     font-family: 'Courier New', Courier, monospace;
 }
-
+/* Centers the page */
  .center { 
      display: block; 
      margin-left: auto; 
@@ -25,7 +25,15 @@ h1{
      width: 50%; 
      text-align: center;
    } 
-
+/* Background color */
   .contain{
     background-color: black;
+}
+
+.choice{
+    border: 1px solid lightgrey;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+
 }
