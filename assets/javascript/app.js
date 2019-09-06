@@ -42,10 +42,6 @@ var questionArr = [
 ];
 
 
-
-
-
-
 // Click FUNCTIONS
 $(document).ready(function () {
 
@@ -55,9 +51,20 @@ $(document).ready(function () {
         $("#img").show();
         $("#Start").hide();
 
-        // Timer
-        clearInterval(intervalId);
-        intervalId = setInterval(decrement, 1000);
+
+        function newQuestion (){
+         var isQuestionOver = (questionArr.length -1)
+           
+         if(isQuestionOver === currentQuestion){
+             console.log("Game over")
+            }else{
+
+                currentQuestion++;
+                startQuestion()
+            }
+
+
+        }
 
         //  The decrement function.
         function decrement() {
@@ -69,7 +76,7 @@ $(document).ready(function () {
             $("#show-number").html("<h3>" + "Time Reamining:" + "" + count + "</h3>");
             if (count === 0) {
                 //  ...run the stop function.
-                stop();
+                
                 //  Alert the user that time is up.
                 timeUp();
             }
@@ -78,6 +85,8 @@ $(document).ready(function () {
         function timeUp() {
             //  to the clearInterval function.
             clearInterval(intervalId);
+            lost++;
+            newQuestion();
         }
         // Function for questions
         function startQuestion() {
@@ -93,10 +102,11 @@ $(document).ready(function () {
 
         };
 
-        // Function for choices(Still working)
+        // Function for choices(and timer)
         function loadChoices(choices) {
-
-            var result = '';
+            count = 10;
+         intervalId = setInterval(decrement, 1000);
+          var result = '';
             for (let i = 0; i < choices.length; i++) {
 
                 result += `<p class="choice" data-answer="${choices[i]}">${choices[i]} </p>`;
@@ -107,6 +117,7 @@ $(document).ready(function () {
             return result;
 
         };
+        
 
         startQuestion();
 
