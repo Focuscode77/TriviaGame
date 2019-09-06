@@ -1,11 +1,45 @@
 
 // Global  Variables 
 var count = 10;
+var currentQuestion = 0;
+var score = 0;
+var lost = 0;
+
 //  Variable that will hold our interval ID when we execute
 //  the "run" function
 var intervalId;
-// Arrays
-var questionArr = ["from which part of a pig do we get ham?", "what is a bratwurst?", "cheery,plum and grape are all variety of which fruit?"]
+// questions array/object
+var questionArr = [
+
+    {
+        question: "from which part of a pig do we get ham?",
+
+        choices: ["belly", "sparerib", "the hind leg"],
+
+        corretAnswer: "the hind leg"
+
+    },
+
+
+    {
+        question: "what is a bratwurst?",
+
+        choices: ["beef stomach", "liver", "a type of german sausage"],
+
+        correctAnswer: "a type of german sausage"
+
+    },
+
+    {
+        question: "cheery,plum and grape are all variety of which fruit?",
+
+        choices: ["mango", "strawberry", "tomato"],
+
+        correctAnswer: "tomato"
+
+    }
+
+];
 
 
 
@@ -51,31 +85,43 @@ $(document).ready(function () {
             //  to the clearInterval function.
             clearInterval(intervalId);
         }
+        // Function for questions
+        function startQuestion() {
 
-        // Loop for questions
-        for (i = 0; i < questionArr.length; i++) {
-            var randomArr = Math.floor(Math.random() * 2);
+            var question = questionArr[currentQuestion].question;
+            var choices = questionArr[currentQuestion].choices;
+
+            $("#game").html('<h4>' + question + '</h4> ')
+             (loadChoices(choices))
+
+        };
 
 
-        }
+        // Function for choices(Still working)
+        function loadChoices(choices) {
+
+            var result = '';
+            for (let i = 0; i < choices.length; i++) {
+
+                result += `<p class="choice" data-answer="${choices[i]}>${choices[i]}</p>`;
+
+            }
+            return result;
+
+        };
+
+        startQuestion();
 
 
+
+
+
+
+        // If Statements
     });
 
 
 
 
-
-
-
-    // If Statements
 });
-
-
-
-
-
-
-
-
 
