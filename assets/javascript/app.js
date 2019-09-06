@@ -16,7 +16,7 @@ var questionArr = [
 
         choices: ["belly", "sparerib", "the hind leg"],
 
-        corretAnswer: "the hind leg"
+        correctAnswer: "the hind leg"
 
     },
 
@@ -157,6 +157,19 @@ $(document).ready(function () {
 
             $('#game').html(result);
         }
+
+        $(document).on('click', '#reset', function () {
+            // Test
+            console.log("Testing");
+            count = 10;
+            currentQuestion = 0;
+            score = 0;
+            lose = 0;
+            result = '';
+            intervalId;
+
+            startQuestion();
+        })
 
         startQuestion();
 
