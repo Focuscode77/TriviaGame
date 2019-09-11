@@ -8,7 +8,10 @@ var result = '';
 //  Variable that will hold our interval ID when we execute
 //  the "run" function
 var intervalId;
+// images
+
 // questions array/object
+
 var questionArr = [
 
     {
@@ -37,6 +40,13 @@ var questionArr = [
 
         correctAnswer: "tomato"
 
+    },
+    {
+        question: " How is sodium chloride better known?",
+
+        choices: ["salt", "sugar", "bakingpowder", "water"],
+
+        correctAnswer: "salt"
     }
 
 ];
@@ -51,21 +61,24 @@ $(document).ready(function () {
         $("#img").show();
         $("#Start").hide();
 
+        console.log("test");
+        // Function for questions
+        function startQuestion() {
+            count = 30;
+            intervalId = setInterval(decrement, 1000);
 
-        function newQuestion() {
-            var isQuestionOver = (questionArr.length - 1)
-
-            if (isQuestionOver === currentQuestion) {
-                console.log("Game over")
-                displayResult()
-            } else {
-
-                currentQuestion++;
-                startQuestion()
-            }
+            var question = questionArr[currentQuestion].question;
+            var choices = questionArr[currentQuestion].choices;
+            // Check debug
+            console.log(question)
+            console.log(choices)
 
 
-        }
+
+            $("#game").html(`<h4> ${question} </h4> ${loadChoices(choices)}`)
+
+
+        };
 
         //  The decrement function.
         function decrement() {
@@ -84,7 +97,6 @@ $(document).ready(function () {
 
         };
 
-
         function timeUp() {
             //  to the clearInterval function.
             clearInterval(intervalId);
@@ -93,23 +105,22 @@ $(document).ready(function () {
         }
 
 
-        // Function for questions
-        function startQuestion() {
-            var question = questionArr[currentQuestion].question;
-            var choices = questionArr[currentQuestion].choices;
-            // Check debug
-            console.log(question)
-            console.log(choices)
 
 
-            count = 10;
-            intervalId = setInterval(decrement, 1000);
+        function newQuestion() {
+            var isQuestionOver = (questionArr.length - 1)
 
-            $("#game").html(`<h4> ${question} </h4> ${loadChoices(choices)}`)
+            if (isQuestionOver === currentQuestion) {
+                console.log("Game over")
+                displayResult()
+            } else {
 
-            // $("#answer").html('<p>' + choices + '</p>'
+                currentQuestion++;
+                startQuestion()
+            }
 
-        };
+
+        }
 
         // Function for choices(and timer)
         function loadChoices(choices) {
@@ -133,11 +144,13 @@ $(document).ready(function () {
             if (rightAnswer === selectedAnswer) {
                 // User win
                 score++;
+
                 newQuestion();
                 console.log("Win");
 
             } else {
                 lose++;
+
                 newQuestion();
                 console.log("loss");
             }
@@ -149,11 +162,11 @@ $(document).ready(function () {
         // display
         function displayResult() {
             const result = `
-              <p> You got ${score} question right! </p>
-              <p> You missed ${lose} questions! </p>
-              <p> Total questions ${questionArr.length}! </p>
-                 <button class="btn btn-primary" id = reset> Reset Game </button>
-            `;
+               <p> You got ${score} question right! </p>
+               <p> You missed ${lose} questions! </p>
+               <p> Total questions ${questionArr.length}! </p>
+               <button class="btn btn-primary" id = reset> Reset Game </button>
+              `;
 
             $('#game').html(result);
         }
@@ -169,15 +182,11 @@ $(document).ready(function () {
             intervalId;
 
             startQuestion();
-        })
+        });
+
 
         startQuestion();
 
-        // If Statements
     });
 
-
-
-
 });
-

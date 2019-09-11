@@ -1,7 +1,7 @@
 body{
     height: 100%;
     width:  100%;
-    background-color: lightcyan; 
+    background-color: #3C6270;
     /* background-image: url("/assets/images/photo-1543362906-acfc16c67564.jpg"); */
     /* background-position: center; */
     /* background-repeat: no-repeat; */
@@ -37,3 +37,7 @@ h1{
     cursor: pointer;
 
 }
+
+
+
+
